@@ -65,5 +65,18 @@ namespace POP_Clicker
                 chromiumWebBrowser1.ExecuteScriptAsyncWhenPageLoaded(Script_UP);
             }
         }
+
+        private void keyUP_check_CheckedChanged(object sender, EventArgs e)
+        {
+            if (keyUP_check.Checked)
+            {
+                chromiumWebBrowser1.ExecuteScriptAsyncWhenPageLoaded(Script_UP);
+            }
+        }
+
+        private void interval_num_selector_ValueChanged(object sender, EventArgs e)
+        {
+            timer1.Interval = (int)interval_num_selector.Value;
+        }
     }
 }

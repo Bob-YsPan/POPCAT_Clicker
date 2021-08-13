@@ -38,11 +38,14 @@
             this.keyUP_check = new System.Windows.Forms.CheckBox();
             this.chromiumWebBrowser1 = new CefSharp.WinForms.ChromiumWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.interval_num_selector = new System.Windows.Forms.NumericUpDown();
+            this.label_ms = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.interval_num_selector)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -69,6 +72,8 @@
             this.flowLayoutPanel1.Controls.Add(this.go_btn);
             this.flowLayoutPanel1.Controls.Add(this.click_btn);
             this.flowLayoutPanel1.Controls.Add(this.keyUP_check);
+            this.flowLayoutPanel1.Controls.Add(this.interval_num_selector);
+            this.flowLayoutPanel1.Controls.Add(this.label_ms);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -77,15 +82,16 @@
             // 
             // urlBox1
             // 
+            this.urlBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.urlBox1.Location = new System.Drawing.Point(3, 3);
             this.urlBox1.Name = "urlBox1";
-            this.urlBox1.Size = new System.Drawing.Size(524, 25);
+            this.urlBox1.Size = new System.Drawing.Size(410, 25);
             this.urlBox1.TabIndex = 1;
             this.urlBox1.Text = "https://popcat.click";
             // 
             // go_btn
             // 
-            this.go_btn.Location = new System.Drawing.Point(533, 3);
+            this.go_btn.Location = new System.Drawing.Point(419, 3);
             this.go_btn.Name = "go_btn";
             this.go_btn.Size = new System.Drawing.Size(75, 23);
             this.go_btn.TabIndex = 0;
@@ -95,7 +101,7 @@
             // 
             // click_btn
             // 
-            this.click_btn.Location = new System.Drawing.Point(614, 3);
+            this.click_btn.Location = new System.Drawing.Point(500, 3);
             this.click_btn.Name = "click_btn";
             this.click_btn.Size = new System.Drawing.Size(75, 23);
             this.click_btn.TabIndex = 2;
@@ -106,12 +112,14 @@
             // keyUP_check
             // 
             this.keyUP_check.AutoSize = true;
-            this.keyUP_check.Location = new System.Drawing.Point(695, 3);
+            this.keyUP_check.Dock = System.Windows.Forms.DockStyle.Left;
+            this.keyUP_check.Location = new System.Drawing.Point(581, 3);
             this.keyUP_check.Name = "keyUP_check";
-            this.keyUP_check.Size = new System.Drawing.Size(69, 19);
+            this.keyUP_check.Size = new System.Drawing.Size(69, 23);
             this.keyUP_check.TabIndex = 3;
             this.keyUP_check.Text = "KeyUp";
             this.keyUP_check.UseVisualStyleBackColor = true;
+            this.keyUP_check.CheckedChanged += new System.EventHandler(this.keyUP_check_CheckedChanged);
             // 
             // chromiumWebBrowser1
             // 
@@ -128,6 +136,42 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // interval_num_selector
+            // 
+            this.interval_num_selector.Dock = System.Windows.Forms.DockStyle.Left;
+            this.interval_num_selector.Location = new System.Drawing.Point(656, 3);
+            this.interval_num_selector.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.interval_num_selector.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.interval_num_selector.Name = "interval_num_selector";
+            this.interval_num_selector.Size = new System.Drawing.Size(59, 25);
+            this.interval_num_selector.TabIndex = 4;
+            this.interval_num_selector.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.interval_num_selector.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.interval_num_selector.ValueChanged += new System.EventHandler(this.interval_num_selector_ValueChanged);
+            // 
+            // label_ms
+            // 
+            this.label_ms.AutoSize = true;
+            this.label_ms.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label_ms.Location = new System.Drawing.Point(721, 0);
+            this.label_ms.Name = "label_ms";
+            this.label_ms.Size = new System.Drawing.Size(76, 29);
+            this.label_ms.TabIndex = 5;
+            this.label_ms.Text = "ms per click";
+            this.label_ms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -143,6 +187,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.interval_num_selector)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -157,6 +202,8 @@
         private CefSharp.WinForms.ChromiumWebBrowser chromiumWebBrowser1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.CheckBox keyUP_check;
+        private System.Windows.Forms.NumericUpDown interval_num_selector;
+        private System.Windows.Forms.Label label_ms;
     }
 }
 
