@@ -15,6 +15,7 @@ namespace POP_Clicker
     public partial class MainForm : Form
     {
         bool Loop_enabled = false;
+        Random rand = new Random();
         //參考：https://gist.github.com/DaWe35/0febd8b058e4476967d12675a622c989
         string Script = @"
                 var event = new KeyboardEvent('keydown', {
@@ -64,6 +65,8 @@ namespace POP_Clicker
             {
                 chromiumWebBrowser1.ExecuteScriptAsyncWhenPageLoaded(Script_UP);
             }
+            int interval_Val = rand.Next((int)interval_num_selector.Value, (int)interval_num_selector.Value + 100);
+            timer1.Interval = interval_Val;
         }
 
         private void keyUP_check_CheckedChanged(object sender, EventArgs e)
