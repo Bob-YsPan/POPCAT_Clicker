@@ -3,9 +3,13 @@
 
 ### 注意：超高速點擊模式記得於host檔案裡增加對記分板的阻擋，以免記分板載入大幅降低執行效率！
 host檔案路徑：
-    C:\Windows\System32\drivers\etc
+```
+C:\Windows\System32\drivers\etc
+```
 須加上：
-    0.0.0.0 leaderboard.popcat.click
+```
+0.0.0.0 leaderboard.popcat.click
+```
 
 (v1.5)
 * 增加紅眼自動重置機制(發生紅眼會清Cookie重置網頁，等幾秒繼續刷)
