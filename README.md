@@ -18,13 +18,13 @@ C:\Windows\System32\drivers\etc
 ![Screenshot](CAP6.png)
   
 * 按下Go載入網頁
-* 按下Click!!!開始高速點擊 *(預設38ms一下)* (v1.6)
+* 按下Click!!!開始高速點擊 **(預設38ms一下)** (v1.6)
 * 提供全腳本高速點擊模式(v1.6)
 * KeyUp勾選欄可以發出KeyUp指令(沒有勾選只有KeyDown)，有了這個指令貓的嘴巴會高速開合(只限暴力點擊的標準模式)
-* 調整 ms per click 的數字可以，可自己微調(範圍1ms ~ 1000ms，1ms步進)點擊頻率 (V1.1增加)
+* 調整 ms per click 前面的數字可自己微調(範圍1ms ~ 1000ms，1ms步進)點擊頻率 (V1.1增加)
 * 增加紅眼自動重置機制(v1.5 增加，注意：只適用popcat.click)(POPASS紅眼相關變數小弟還抓不到)
 * 30秒點擊率估算(監測是否達到紅眼標準：POPCAT：800/30s，POPASS：1000/30s(目前觀察似乎是這樣))(v1.6)
-* Chromium DEVTOOLS 後台隨時監測資料回傳狀況 *(點擊Count字樣)* (v1.6)
+* Chromium DEVTOOLS 後台隨時監測資料回傳狀況 **(點擊Count字樣)** (v1.6)
 * POPASS亦可適用暴力點擊模式(v1.6 驗證)
   
 (純屬程式練習，大家還是乖乖手點貢獻流量比較好吧...XD)  
