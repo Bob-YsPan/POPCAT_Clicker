@@ -39,8 +39,14 @@
             this.ufast_check = new System.Windows.Forms.CheckBox();
             this.interval_num_selector = new System.Windows.Forms.NumericUpDown();
             this.label_ms = new System.Windows.Forms.Label();
+            this.count_label = new System.Windows.Forms.Label();
+            this.count_num_label = new System.Windows.Forms.Label();
+            this.border_label = new System.Windows.Forms.Label();
+            this.rate_label = new System.Windows.Forms.Label();
+            this.rate_ext = new System.Windows.Forms.Label();
             this.chromiumWebBrowser1 = new CefSharp.WinForms.ChromiumWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rate_timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -63,8 +69,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.chromiumWebBrowser1);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 707);
-            this.splitContainer1.SplitterDistance = 32;
+            this.splitContainer1.Size = new System.Drawing.Size(982, 553);
+            this.splitContainer1.SplitterDistance = 36;
             this.splitContainer1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -76,10 +82,15 @@
             this.flowLayoutPanel1.Controls.Add(this.ufast_check);
             this.flowLayoutPanel1.Controls.Add(this.interval_num_selector);
             this.flowLayoutPanel1.Controls.Add(this.label_ms);
+            this.flowLayoutPanel1.Controls.Add(this.count_label);
+            this.flowLayoutPanel1.Controls.Add(this.count_num_label);
+            this.flowLayoutPanel1.Controls.Add(this.border_label);
+            this.flowLayoutPanel1.Controls.Add(this.rate_label);
+            this.flowLayoutPanel1.Controls.Add(this.rate_ext);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 32);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(982, 36);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // urlBox1
@@ -87,13 +98,13 @@
             this.urlBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.urlBox1.Location = new System.Drawing.Point(3, 3);
             this.urlBox1.Name = "urlBox1";
-            this.urlBox1.Size = new System.Drawing.Size(275, 25);
+            this.urlBox1.Size = new System.Drawing.Size(145, 25);
             this.urlBox1.TabIndex = 1;
             this.urlBox1.Text = "https://popcat.click";
             // 
             // go_btn
             // 
-            this.go_btn.Location = new System.Drawing.Point(284, 3);
+            this.go_btn.Location = new System.Drawing.Point(154, 3);
             this.go_btn.Name = "go_btn";
             this.go_btn.Size = new System.Drawing.Size(95, 23);
             this.go_btn.TabIndex = 0;
@@ -103,7 +114,7 @@
             // 
             // click_btn
             // 
-            this.click_btn.Location = new System.Drawing.Point(385, 3);
+            this.click_btn.Location = new System.Drawing.Point(255, 3);
             this.click_btn.Name = "click_btn";
             this.click_btn.Size = new System.Drawing.Size(75, 23);
             this.click_btn.TabIndex = 2;
@@ -115,7 +126,7 @@
             // 
             this.keyUP_check.AutoSize = true;
             this.keyUP_check.Dock = System.Windows.Forms.DockStyle.Left;
-            this.keyUP_check.Location = new System.Drawing.Point(466, 3);
+            this.keyUP_check.Location = new System.Drawing.Point(336, 3);
             this.keyUP_check.Name = "keyUP_check";
             this.keyUP_check.Size = new System.Drawing.Size(69, 23);
             this.keyUP_check.TabIndex = 3;
@@ -127,7 +138,7 @@
             // 
             this.ufast_check.AutoSize = true;
             this.ufast_check.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ufast_check.Location = new System.Drawing.Point(541, 3);
+            this.ufast_check.Location = new System.Drawing.Point(411, 3);
             this.ufast_check.Name = "ufast_check";
             this.ufast_check.Size = new System.Drawing.Size(81, 23);
             this.ufast_check.TabIndex = 6;
@@ -138,7 +149,7 @@
             // interval_num_selector
             // 
             this.interval_num_selector.Dock = System.Windows.Forms.DockStyle.Left;
-            this.interval_num_selector.Location = new System.Drawing.Point(628, 3);
+            this.interval_num_selector.Location = new System.Drawing.Point(498, 3);
             this.interval_num_selector.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -154,7 +165,7 @@
             this.interval_num_selector.TabIndex = 4;
             this.interval_num_selector.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.interval_num_selector.Value = new decimal(new int[] {
-            10,
+            38,
             0,
             0,
             0});
@@ -164,12 +175,73 @@
             // 
             this.label_ms.AutoSize = true;
             this.label_ms.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label_ms.Location = new System.Drawing.Point(693, 0);
+            this.label_ms.Location = new System.Drawing.Point(563, 0);
             this.label_ms.Name = "label_ms";
             this.label_ms.Size = new System.Drawing.Size(76, 29);
             this.label_ms.TabIndex = 5;
             this.label_ms.Text = "ms per click";
             this.label_ms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // count_label
+            // 
+            this.count_label.AutoSize = true;
+            this.count_label.Dock = System.Windows.Forms.DockStyle.Left;
+            this.count_label.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.count_label.Location = new System.Drawing.Point(645, 0);
+            this.count_label.Name = "count_label";
+            this.count_label.Size = new System.Drawing.Size(51, 29);
+            this.count_label.TabIndex = 7;
+            this.count_label.Text = "Count:";
+            this.count_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.count_label.Click += new System.EventHandler(this.count_label_Click);
+            // 
+            // count_num_label
+            // 
+            this.count_num_label.AutoSize = true;
+            this.count_num_label.Dock = System.Windows.Forms.DockStyle.Left;
+            this.count_num_label.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count_num_label.Location = new System.Drawing.Point(702, 0);
+            this.count_num_label.Name = "count_num_label";
+            this.count_num_label.Size = new System.Drawing.Size(21, 29);
+            this.count_num_label.TabIndex = 8;
+            this.count_num_label.Text = "0";
+            this.count_num_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // border_label
+            // 
+            this.border_label.AutoSize = true;
+            this.border_label.Dock = System.Windows.Forms.DockStyle.Left;
+            this.border_label.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.border_label.Location = new System.Drawing.Point(729, 0);
+            this.border_label.Name = "border_label";
+            this.border_label.Size = new System.Drawing.Size(21, 29);
+            this.border_label.TabIndex = 11;
+            this.border_label.Text = "|";
+            this.border_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // rate_label
+            // 
+            this.rate_label.AutoSize = true;
+            this.rate_label.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rate_label.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rate_label.Location = new System.Drawing.Point(756, 0);
+            this.rate_label.Name = "rate_label";
+            this.rate_label.Size = new System.Drawing.Size(21, 29);
+            this.rate_label.TabIndex = 9;
+            this.rate_label.Text = "0";
+            this.rate_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // rate_ext
+            // 
+            this.rate_ext.AutoSize = true;
+            this.rate_ext.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rate_ext.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rate_ext.Location = new System.Drawing.Point(783, 0);
+            this.rate_ext.Name = "rate_ext";
+            this.rate_ext.Size = new System.Drawing.Size(65, 29);
+            this.rate_ext.TabIndex = 10;
+            this.rate_ext.Text = "Pops/30s";
+            this.rate_ext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chromiumWebBrowser1
             // 
@@ -178,20 +250,25 @@
             this.chromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 0);
             this.chromiumWebBrowser1.Name = "chromiumWebBrowser1";
-            this.chromiumWebBrowser1.Size = new System.Drawing.Size(800, 671);
+            this.chromiumWebBrowser1.Size = new System.Drawing.Size(982, 513);
             this.chromiumWebBrowser1.TabIndex = 0;
             this.chromiumWebBrowser1.FrameLoadEnd += new System.EventHandler<CefSharp.FrameLoadEndEventArgs>(this.chromiumWebBrowser1_FrameLoadEnd);
             // 
             // timer1
             // 
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 38;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // rate_timer
+            // 
+            this.rate_timer.Interval = 30000;
+            this.rate_timer.Tick += new System.EventHandler(this.rate_timer_Tick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 707);
+            this.ClientSize = new System.Drawing.Size(982, 553);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -220,6 +297,12 @@
         private System.Windows.Forms.NumericUpDown interval_num_selector;
         private System.Windows.Forms.Label label_ms;
         private System.Windows.Forms.CheckBox ufast_check;
+        private System.Windows.Forms.Label count_label;
+        private System.Windows.Forms.Label count_num_label;
+        private System.Windows.Forms.Label rate_label;
+        private System.Windows.Forms.Label rate_ext;
+        private System.Windows.Forms.Timer rate_timer;
+        private System.Windows.Forms.Label border_label;
     }
 }
 
