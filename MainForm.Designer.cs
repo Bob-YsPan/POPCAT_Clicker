@@ -44,6 +44,8 @@
             this.border_label = new System.Windows.Forms.Label();
             this.rate_label = new System.Windows.Forms.Label();
             this.rate_ext = new System.Windows.Forms.Label();
+            this.botfallback = new System.Windows.Forms.Label();
+            this.bot_count_selector = new System.Windows.Forms.NumericUpDown();
             this.chromiumWebBrowser1 = new CefSharp.WinForms.ChromiumWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.rate_timer = new System.Windows.Forms.Timer(this.components);
@@ -53,6 +55,7 @@
             this.splitContainer1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.interval_num_selector)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bot_count_selector)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -69,7 +72,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.chromiumWebBrowser1);
-            this.splitContainer1.Size = new System.Drawing.Size(982, 553);
+            this.splitContainer1.Size = new System.Drawing.Size(1006, 553);
             this.splitContainer1.SplitterDistance = 36;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -87,10 +90,12 @@
             this.flowLayoutPanel1.Controls.Add(this.border_label);
             this.flowLayoutPanel1.Controls.Add(this.rate_label);
             this.flowLayoutPanel1.Controls.Add(this.rate_ext);
+            this.flowLayoutPanel1.Controls.Add(this.botfallback);
+            this.flowLayoutPanel1.Controls.Add(this.bot_count_selector);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(982, 36);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1006, 36);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // urlBox1
@@ -150,6 +155,7 @@
             // 
             this.interval_num_selector.Dock = System.Windows.Forms.DockStyle.Left;
             this.interval_num_selector.Location = new System.Drawing.Point(498, 3);
+            this.interval_num_selector.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.interval_num_selector.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -175,7 +181,8 @@
             // 
             this.label_ms.AutoSize = true;
             this.label_ms.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label_ms.Location = new System.Drawing.Point(563, 0);
+            this.label_ms.Location = new System.Drawing.Point(557, 0);
+            this.label_ms.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.label_ms.Name = "label_ms";
             this.label_ms.Size = new System.Drawing.Size(76, 29);
             this.label_ms.TabIndex = 5;
@@ -187,7 +194,8 @@
             this.count_label.AutoSize = true;
             this.count_label.Dock = System.Windows.Forms.DockStyle.Left;
             this.count_label.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.count_label.Location = new System.Drawing.Point(645, 0);
+            this.count_label.Location = new System.Drawing.Point(639, 0);
+            this.count_label.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.count_label.Name = "count_label";
             this.count_label.Size = new System.Drawing.Size(51, 29);
             this.count_label.TabIndex = 7;
@@ -200,7 +208,8 @@
             this.count_num_label.AutoSize = true;
             this.count_num_label.Dock = System.Windows.Forms.DockStyle.Left;
             this.count_num_label.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.count_num_label.Location = new System.Drawing.Point(702, 0);
+            this.count_num_label.Location = new System.Drawing.Point(693, 0);
+            this.count_num_label.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.count_num_label.Name = "count_num_label";
             this.count_num_label.Size = new System.Drawing.Size(21, 29);
             this.count_num_label.TabIndex = 8;
@@ -211,8 +220,9 @@
             // 
             this.border_label.AutoSize = true;
             this.border_label.Dock = System.Windows.Forms.DockStyle.Left;
-            this.border_label.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.border_label.Location = new System.Drawing.Point(729, 0);
+            this.border_label.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.border_label.Location = new System.Drawing.Point(714, 0);
+            this.border_label.Margin = new System.Windows.Forms.Padding(0);
             this.border_label.Name = "border_label";
             this.border_label.Size = new System.Drawing.Size(21, 29);
             this.border_label.TabIndex = 11;
@@ -224,7 +234,8 @@
             this.rate_label.AutoSize = true;
             this.rate_label.Dock = System.Windows.Forms.DockStyle.Left;
             this.rate_label.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rate_label.Location = new System.Drawing.Point(756, 0);
+            this.rate_label.Location = new System.Drawing.Point(738, 0);
+            this.rate_label.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.rate_label.Name = "rate_label";
             this.rate_label.Size = new System.Drawing.Size(21, 29);
             this.rate_label.TabIndex = 9;
@@ -236,12 +247,45 @@
             this.rate_ext.AutoSize = true;
             this.rate_ext.Dock = System.Windows.Forms.DockStyle.Left;
             this.rate_ext.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.rate_ext.Location = new System.Drawing.Point(783, 0);
+            this.rate_ext.Location = new System.Drawing.Point(759, 0);
+            this.rate_ext.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.rate_ext.Name = "rate_ext";
             this.rate_ext.Size = new System.Drawing.Size(65, 29);
             this.rate_ext.TabIndex = 10;
             this.rate_ext.Text = "Pops/30s";
             this.rate_ext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // botfallback
+            // 
+            this.botfallback.AutoSize = true;
+            this.botfallback.Dock = System.Windows.Forms.DockStyle.Left;
+            this.botfallback.Location = new System.Drawing.Point(830, 0);
+            this.botfallback.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.botfallback.Name = "botfallback";
+            this.botfallback.Size = new System.Drawing.Size(33, 29);
+            this.botfallback.TabIndex = 13;
+            this.botfallback.Text = "bot: ";
+            this.botfallback.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // bot_count_selector
+            // 
+            this.bot_count_selector.Dock = System.Windows.Forms.DockStyle.Left;
+            this.bot_count_selector.Location = new System.Drawing.Point(863, 3);
+            this.bot_count_selector.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.bot_count_selector.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.bot_count_selector.Name = "bot_count_selector";
+            this.bot_count_selector.Size = new System.Drawing.Size(48, 25);
+            this.bot_count_selector.TabIndex = 12;
+            this.bot_count_selector.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.bot_count_selector.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             // 
             // chromiumWebBrowser1
             // 
@@ -250,7 +294,7 @@
             this.chromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 0);
             this.chromiumWebBrowser1.Name = "chromiumWebBrowser1";
-            this.chromiumWebBrowser1.Size = new System.Drawing.Size(982, 513);
+            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1006, 513);
             this.chromiumWebBrowser1.TabIndex = 0;
             this.chromiumWebBrowser1.FrameLoadEnd += new System.EventHandler<CefSharp.FrameLoadEndEventArgs>(this.chromiumWebBrowser1_FrameLoadEnd);
             // 
@@ -268,7 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 553);
+            this.ClientSize = new System.Drawing.Size(1006, 553);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -280,6 +324,7 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.interval_num_selector)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bot_count_selector)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -303,6 +348,8 @@
         private System.Windows.Forms.Label rate_ext;
         private System.Windows.Forms.Timer rate_timer;
         private System.Windows.Forms.Label border_label;
+        private System.Windows.Forms.Label botfallback;
+        private System.Windows.Forms.NumericUpDown bot_count_selector;
     }
 }
 

@@ -27,6 +27,8 @@ namespace POP_Clicker
         //計算點擊量
         decimal startpop = 0;
         decimal stoppop = 0;
+        //判定為Bot需要的次數;
+        byte bot_count = 0;
 
         //在Cefsharp跑Script
         //參考：https://gist.github.com/DaWe35/0febd8b058e4476967d12675a622c989
@@ -156,6 +158,7 @@ namespace POP_Clicker
             Cef.GetGlobalCookieManager().DeleteCookies("", "");
             chromiumWebBrowser1.Load(urlBox1.Text);
             click_count = 0;
+            bot_count = 0;
             rate_label.Text = 0.ToString();
             rate_label.ForeColor = Color.Black;
             count_num_label.Text = click_count.ToString();
@@ -232,6 +235,11 @@ namespace POP_Clicker
                         //int interval_Val = rand.Next((int)interval_num_selector.Value, (int)interval_num_selector.Value + 100);
                         //timer1.Interval = interval_Val;
                         click_count++;
+                        //有勾就跑KeyUp指令，貓咪合嘴
+                        if (keyUP_check.Checked)
+                        {
+                            chromiumWebBrowser1.ExecuteScriptAsync(Script_UP);
+                        }
                     }
                     //以下為紅眼偵測機制，遇到刷Cookie重載
                     //該方法在自動Reload後如果不使用Task自動重新刷會當機
@@ -240,6 +248,7 @@ namespace POP_Clicker
                     //Console.WriteLine("PA");
                     //如果沒有資料預設為False
                     bool bot_bool = false;
+                    bool bot_fallback = false;
                     try
                     {
                         bot_bool = (bool)bot_result.Result;
@@ -247,20 +256,21 @@ namespace POP_Clicker
                     catch (System.InvalidCastException)
                     {
                         Console.WriteLine("WARNING:無法讀取BOT狀態");
-                        bot_bool = false;
+                        bot_fallback = true;
                     }
                     catch (System.NullReferenceException)
                     {
                         Console.WriteLine("WARNING:無法讀取BOT狀態");
-                        bot_bool = false;
+                        bot_fallback = true;
+                    }
+                    //如果用計數的bot值到了，一樣重刷網頁("POPASS或許可用，將數字調大後定期重刷")
+                    //前提是無法抓到Bot值
+                    if (bot_fallback && bot_count > bot_count_selector.Value)
+                    {
+                        bot_bool = true;
                     }
                     if (bot_bool)
                     {
-                        //有勾就跑KeyUp指令，貓咪合嘴
-                        if (keyUP_check.Checked)
-                        {
-                            chromiumWebBrowser1.ExecuteScriptAsync(Script_UP);
-                        }
                         //返回結果是紅眼就暫停點擊並清Cookies
                         chromiumWebBrowser1.ExecuteScriptAsync(Script_UP);
                         Cef.GetGlobalCookieManager().DeleteCookies("", "");
@@ -353,12 +363,17 @@ namespace POP_Clicker
                     rate_timer.Enabled = false;
                     //Reload網頁需要跑第一次執行的東西
                     Ultra_first_launch = true;
+                    //歸零機器人計數
+                    bot_count = 0;
+                    //歸零點擊計數
+                    click_count = 0;
                 }
                 //剛載完啟動點擊次數timer，Ultrafast模式不能用
                 if (!(ufast_check.Checked))
                 {
                     startpop = click_count;
                     stoppop = click_count;
+                    rate_label.Text = 0.ToString();
                     rate_timer.Enabled = true;
                 }
                 else
@@ -391,6 +406,9 @@ namespace POP_Clicker
                 rate_label.Text = rate.ToString();
             }));
             startpop = click_count;
+            if(bot_count_selector.Value > 0)
+                bot_count++;
+            Console.WriteLine(bot_count);
         }
     }
 }
